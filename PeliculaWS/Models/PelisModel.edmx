@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PelisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="idPelicula" />
+          </Key>
+          <Property Name="idPelicula" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="35" />
+          <Property Name="Pais" Type="varchar" MaxLength="25" />
+          <Property Name="Anio" Type="int" />
+          <Property Name="Duracion" Type="int" />
+          <Property Name="Genero" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityContainer Name="PelisModelStoreContainer">
+          <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PelisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="idPelicula" />
+          </Key>
+          <Property Name="idPelicula" Type="Guid" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Anio" Type="Int32" />
+          <Property Name="Duracion" Type="Int32" />
+          <Property Name="Genero" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PelisEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Peliculas" EntityType="Self.Pelicula" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PelisModelStoreContainer" CdmEntityContainer="PelisEntities1">
+          <EntitySetMapping Name="Peliculas">
+            <EntityTypeMapping TypeName="PelisModel.Pelicula">
+              <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="idPelicula" ColumnName="idPelicula" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
